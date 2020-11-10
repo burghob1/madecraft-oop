@@ -30,14 +30,15 @@ public class Duck {
 	}
 
 	void quack() {
-		System.out.println("quack quack");
+		System.out.println(this.name + ": quack quack");
 		try {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(
-					"sounds/quack.wav").toURI().toURL());
+					"madecraft-oop/sounds/quack.wav").toURI().toURL());
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
-			clip.start();
+			clip.loop(1);
 			Thread.sleep(3400);
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -45,8 +46,9 @@ public class Duck {
 
 	@Override
 	public String toString() {
-		return "My name is " + name + " I like to eat " + favoriteFood +
-				" lifeExpectancy: " + lifeExpectancy;
+		return "My name is " + this.name + " and my favorite food is the mighty and lovely "
+				+ this.favoriteFood + ". And to top it all of, my life expectancy is " + this.lifeExpectancy +
+				" years.";
 	}
 
 }
